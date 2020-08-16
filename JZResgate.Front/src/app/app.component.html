@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="my-4">JZ Resgate</h1>
+  <div class="text-right py-2">
+    <button type="button" class="btn btn-success" (click)="handleCreateRecoveryTruck()">Novo guincho</button>
+  </div>
+  <jz-recovery-truck-form
+  [recoveryTruck]="recoveryTruck"
+  [formTitle]="formTitle"
+  [ngClass]="{'d-none': isFormClosed}"
+  (formClose)="handleFormClose()"
+  (formSave)="handleFormSave()">
+</jz-recovery-truck-form>
+  <jz-list
+  (recoveryTruckEdit)="handleEditRecoveryTruck($event)"
+  (recoveryTruckRemove)="handleRecoveryTruckRemove()"
+  [recoveryTruckList]="recoveryTruckList"
+  ></jz-list>
+</div>

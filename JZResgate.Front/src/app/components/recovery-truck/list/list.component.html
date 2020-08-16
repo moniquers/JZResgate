@@ -1,0 +1,32 @@
+<div [hidden]="!error.hasError" class="alert alert-danger" role="alert">
+  {{error.message}}
+</div>
+<table class="table table-hover mt-5">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Apelido</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Placa</th>
+      <th scope="col">Criado em</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recoveryTruck of recoveryTruckList">
+      <th scope="row">{{ recoveryTruck.id}}</th>
+      <td>{{ recoveryTruck.alias }}</td>
+      <td>{{ recoveryTruck.model }}</td>
+      <td>{{ recoveryTruck.plate }}</td>
+      <td>{{ recoveryTruck.createDate | date: "dd/MM/yyyy" }}</td>
+      <td class="text-right">
+        <button class="btn btn-link py-0" (click)="handleEditRecoveryTruck(recoveryTruck.id)">
+          <i class="fa fa-pencil fa-size text-primary"></i>
+        </button>
+        <button class="btn btn-link py-0" (click)="handleRemoveRecoveryTruck(recoveryTruck.id)">
+          <i class="fa fa-times fa-size text-danger"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

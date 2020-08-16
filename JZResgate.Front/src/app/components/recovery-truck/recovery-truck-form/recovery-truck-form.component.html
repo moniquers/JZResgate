@@ -1,0 +1,27 @@
+<div [hidden]="!error.hasError" class="alert alert-danger" role="alert">
+  {{error.message}}
+</div>
+<h3>{{formTitle}}</h3>
+
+<form #formRecoveryTruck="ngForm"
+(ngSubmit)="handleSaveRecoveryTruck(formRecoveryTruck)" class="my-4">
+  <div class="form-group">
+    <label for="alias">Apelido</label>
+    <input #alias="ngModel" [(ngModel)]="recoveryTruck.alias"  type="text" class="form-control" id="alias" name="alias">
+  </div>
+  <div class="form-group">
+    <label for="model">Modelo</label>
+    <input  #model="ngModel" [(ngModel)]="recoveryTruck.model" type="text" class="form-control" id="model" name="model">
+  </div>
+  <div class="form-group">
+    <label for="plate">Placa</label>
+    <input #plate="ngModel" [(ngModel)]="recoveryTruck.plate" type="text" class="form-control" id="plate" name="plate" required>
+    <div [hidden]="plate.valid || !formRecoveryTruck.submitted" class="alert alert-danger" role="alert">
+      É obrigatório informar uma placa
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary mx-2">Enviar</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="handleFormClose(formRecoveryTruck)">Fechar</button>
+  </div>
+</form>
